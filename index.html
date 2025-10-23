@@ -1,0 +1,334 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bộ Công Cụ Tác Nghiệp Pháp Lý</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Tải Font Times New Roman và Inter */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Times+New+Roman:wght@400;700&display=swap');
+        
+        body {
+            font-family: 'Times New Roman', serif;
+            color: #1f2937; 
+            min-height: 100vh;
+            overflow-y: auto; 
+            scroll-behavior: smooth;
+        }
+        
+        /* BANNER CHÍNH */
+        .header-soft-glow {
+            animation: color-shift 20s ease infinite; 
+            background: url('https://content-fetcher-urls.googleusercontent.com/uploaded:unnamed 01.jpg-1f2c36f3-e581-40c1-b5c7-06d42d765d41') no-repeat center center;
+            background-size: cover; 
+            position: relative;
+            padding: 2.5rem 0;
+            box-shadow: 0 8px 20px rgba(29, 78, 216, 0.4);
+        }
+        
+        .header-soft-glow::before {
+             content: '';
+             position: absolute;
+             top: 0;
+             left: 0;
+             right: 0;
+             bottom: 0;
+             background: linear-gradient(135deg, rgba(29, 78, 216, 0.4), rgba(124, 58, 237, 0.4)); 
+             z-index: 1;
+        }
+
+        .header-soft-glow > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes color-shift {
+            0% { background-position: 0% 50%; }
+            25% { background-position: 50% 50%; }
+            50% { background-position: 100% 50%; }
+            75% { background-position: 50% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* BANNER KẾ HOẠCH */
+        #data-cleaning-banner {
+            animation: plan-color-shift 10s ease infinite;
+            background: linear-gradient(90deg, #F97316, #EF4444, #8B5CF6);
+            background-size: 300% 100%;
+            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.6);
+            font-weight: 800;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes plan-color-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .title-soft-glow {
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.9);
+        }
+        
+        .custom-card {
+            background-color: #ffffff; 
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease-in-out;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .button-with-effect {
+            position: relative; 
+            overflow: hidden; 
+            z-index: 1;
+            transition: all 0.3s ease-in-out;
+            border: 1px solid #d1d5db;
+        }
+        
+        .button-with-effect:hover {
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.6), 0 5px 15px rgba(0, 0, 0, 0.15);
+            transform: translateY(-3px); 
+            animation: tthc-float-glow 1.5s infinite alternate; 
+        }
+
+        @keyframes tthc-float-glow {
+            0% { transform: translateY(-3px) scale(1.0); }
+            100% { transform: translateY(-1px) scale(1.01); }
+        }
+
+        .button-with-effect .border-line {
+            position: absolute;
+            background: linear-gradient(to right, transparent, #3B82F6, transparent);
+            z-index: 20;
+            opacity: 0;
+        }
+        .button-with-effect:not(:hover) .border-line {
+            opacity: 0 !important;
+        }
+
+        .button-with-effect .top-line { top: 0; left: 0; width: 100%; height: 2px; transform: translateX(-100%); }
+        .button-with-effect:hover .top-line { animation: tech-scan-h 0.8s linear forwards; }
+        @keyframes tech-scan-h {
+            0% { transform: translateX(-100%); opacity: 1; }
+            100% { transform: translateX(100%); opacity: 1; }
+        }
+
+        .button-with-effect .right-line { top: 0; right: 0; width: 2px; height: 100%; background: linear-gradient(to bottom, transparent, #3B82F6, transparent); transform: translateY(-100%); }
+        .button-with-effect:hover .right-line { animation: tech-scan-v 0.8s linear forwards; animation-delay: 0.2s; }
+        @keyframes tech-scan-v {
+            0% { transform: translateY(-100%); opacity: 1; }
+            100% { transform: translateY(100%); opacity: 1; }
+        }
+        
+        .button-with-effect .bottom-line { bottom: 0; right: 0; width: 100%; height: 2px; transform: translateX(100%); }
+        .button-with-effect:hover .bottom-line { animation: tech-scan-h 0.8s linear forwards reverse; animation-delay: 0.4s; }
+
+        .button-with-effect .left-line { bottom: 0; left: 0; width: 2px; height: 100%; background: linear-gradient(to top, transparent, #3B82F6, transparent); transform: translateY(100%); }
+        .button-with-effect:hover .left-line { animation: tech-scan-v 0.8s linear forwards reverse; animation-delay: 0.6s; }
+        
+        .tthc-button {
+            height: auto; 
+            min-height: 50px; 
+            padding: 0.2rem 0.5rem;
+            display: grid; 
+            grid-template-columns: 1fr 3fr; 
+            align-items: center; 
+            justify-content: start;
+            text-align: center;
+            background-color: #f8fafc; 
+            color: #1f2937; 
+            font-family: 'Times New Roman', serif; 
+            font-weight: 700;
+        }
+        .tthc-button.selected {
+            background-color: #1d4ed8;
+            color: white;
+        }
+
+        .tthc-button .icon-wrapper {
+            grid-column: 1 / 2;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 4px; 
+            transition: all 0.3s;
+            position: relative;
+        }
+        .tthc-button .icon {
+            width: 28px; 
+            height: 28px;
+            stroke: currentColor; 
+            animation: icon-glow-pulse 3s ease infinite alternate;
+        }
+        .tthc-button:hover .icon {
+             animation: icon-color-shift 3s ease infinite alternate;
+        }
+        
+        @keyframes text-color-shift-light {
+            0% { color: #1D4ED8; }
+            33% { color: #059669; }
+            66% { color: #DB2777; }
+            100% { color: #1D4ED8; }
+        }
+
+        @keyframes icon-glow-pulse {
+            0% { filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.8)); }
+            50% { filter: drop-shadow(0 0 10px rgba(236, 72, 153, 0.9)); }
+            100% { filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.8)); }
+        }
+        
+        @keyframes icon-color-shift {
+            0% { color: #DB2777; }
+            33% { color: #10b981; }
+            66% { color: #f59e0b; }
+            100% { color: #DB2777; }
+        }
+
+        .tthc-button .tthc-text {
+            grid-column: 2 / 3;
+            font-size: 1rem;
+            line-height: 1.2;
+            word-break: break-word; 
+            white-space: normal;
+            display: block;
+            padding-left: 5px;
+            text-align: left;
+            animation: text-color-shift-light 8s linear infinite alternate;
+        }
+        
+        .tthc-button.selected .tthc-text {
+            color: white;
+            animation: none;
+        }
+        
+        .func-button.selected {
+            outline: 2px solid #2563eb;
+            outline-offset: 2px;
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
+        }
+
+        .execute-button {
+            box-shadow: 0 4px 15px rgba(29, 78, 216, 0.5); 
+            background-color: #1D4ED8;
+            color: white; 
+            position: relative;
+        }
+
+        .execute-button #button-text {
+            animation: color-shift-text 5s linear infinite;
+        }
+
+        .execute-button::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 3px solid transparent;
+            border-radius: 0.5rem;
+            animation: scan-circle-effect 3s linear infinite;
+            z-index: 0;
+            opacity: 0;
+        }
+        
+        .execute-button:hover::after, .execute-button.clicked::after {
+            opacity: 1;
+        }
+
+        @keyframes color-shift-text {
+            0% { color: #fff; }
+            25% { color: #ffe600; } 
+            50% { color: #ff6347; } 
+            75% { color: #00ff00; } 
+            100% { color: #fff; }
+        }
+        
+        @keyframes scan-circle-effect {
+            0% { transform: rotate(0deg); opacity: 0.5; border-color: #3B82F6 transparent transparent transparent; }
+            25% { border-color: #3B82F6 #3B82F6 transparent transparent; }
+            50% { transform: rotate(180deg); border-color: #3B82F6 #3B82F6 #3B82F6 transparent; }
+            75% { border-color: #3B82F6 #3B82F6 #3B82F6 #3B82F6; }
+            100% { transform: rotate(360deg); opacity: 0.5; border-color: #3B82F6 transparent transparent transparent; }
+        }
+
+        /* NEW MARQUEE STYLES */
+        .marquee-container {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            box-sizing: border-box;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+            padding: 8px 0;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee-scroll 30s linear infinite;
+            font-size: 1.1rem; /* approx 13pt */
+            font-weight: bold;
+            font-family: 'Times New Roman', serif;
+        }
+        
+        .marquee-content span {
+            display: inline-block;
+            animation: letter-jump 1s ease-in-out infinite alternate, color-wave 5s linear infinite;
+        }
+
+        @keyframes marquee-scroll {
+            0%   { transform: translate(0, 0); }
+            100% { transform: translate(-200%, 0); }
+        }
+        
+        @keyframes color-wave {
+            0% { color: #ff0000; }   /* Red */
+            25% { color: #ffff00; } /* Yellow */
+            50% { color: #ff0000; } /* Red */
+            75% { color: #ffff00; } /* Yellow */
+            100% { color: #ff0000; } /* Red */
+        }
+        
+        @keyframes letter-jump {
+            0% { transform: translateY(0) scale(1.0); text-shadow: 0 0 5px #fff; }
+            50% { transform: translateY(-5px) scale(1.1); text-shadow: 0 0 15px #ffdd00; }
+            100% { transform: translateY(0) scale(1.0); text-shadow: 0 0 5px #fff; }
+        }
+
+        .firework {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: gold;
+            border-radius: 50%;
+            box-shadow: 0 0 5px gold, 0 0 10px gold, 0 0 15px gold;
+            opacity: 0;
+            animation: firework-explode 1.5s ease-out infinite;
+        }
+        
+        @keyframes firework-explode {
+            0% { transform: scale(0); opacity: 1; }
+            100% { transform: scale(1) translate(var(--x), var(--y)); opacity: 0; }
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0"
+  }
+}
+</script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+</html>
